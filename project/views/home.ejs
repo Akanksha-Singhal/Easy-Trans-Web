@@ -1,0 +1,74 @@
+<% include ./partials/header %>
+
+<li><a href="#">Network Map</a></li>
+
+    <div class="journeyPlanner panel panel-info">
+        <div class="panel-heading">Journey Planner <!-- and Fares--></div>
+            <div class="panel-body">        
+            
+                <form action="/easytrans" method="post"  class="form-group">
+                    <div class="block">
+                        From
+                        <input list="source" name="source" class="form-control">
+                            <datalist id="source">
+                                <% Stops.forEach(function(stop){  %>
+                                    <option id="<%= stop.StopCode%>" value="<%=stop.Name.replace('\r\n','')%>" >
+                                <% });  %>      
+                            </datalist>
+                    </div>               
+                       
+                    <div class="block">
+                        To
+                        <input list="destination" name="destination" class="form-control">
+                            <datalist id="destination">
+                                <% Stops.forEach(function(stop){  %>
+                                    <option id="<%= stop.StopCode%>" value="<%=stop.Name.replace('\r\n','')%>">
+                                <% });  %>                             
+                            </datalist>
+                    </div>                 
+                    
+                    <div class="block">
+                    Time of Journey
+                        <input type="time" name="time" class="form-control">
+                    </div>
+
+                    <button id="findBuses" class="btn btn-info">Find Buses</button>   
+                </form>            
+        </div>
+    </div>
+
+    <div class="AvailableRoutes">
+     Stop1  Stop1  Stop1  Stop1
+    </div>
+ 
+    <!-- JQuery and Javascript -->
+     <script type="text/javascript" >
+      var source, destination;       
+     $(window).on("load", function()
+     {       
+
+        $("#findBuses").on("click", function(){
+            source = $("input[name=source]")[0].value;
+            destination = $("input[name=destination]")[0].value;
+            window.location.href = "http://easytrans2/"+source+"/"+destination;
+            });
+
+       
+                 
+    //        $('.dropdown-toggle').dropdown();
+    //         $("option").on("click",function()
+    //         {  var str=$(this).parent().prev( ".dropdownMenu" ).attr('id');
+    //                 if(str=="dropdownMenu1")
+    //                 {source=$(this).attr('id');
+    //                 }
+    //                 if(str=="dropdownMenu2")
+    //                 {destination=$(this).attr('id');}
+    //                 str="#"+str;
+    //             $(str).text($(this).text());
+    //         });      
+    //          $("#showRoutesBtn").on("click",function()
+    //        {    
+    //             $(this).attr("href","/easytrans/"+source+"/"+destination);
+            // });
+    </script>
+<% include ./partials/footer%>

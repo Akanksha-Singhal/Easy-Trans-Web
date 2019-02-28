@@ -1,0 +1,27 @@
+.journeyPlanner{
+    margin-left:30%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    width: 50%;
+}
+
+.form-control{
+    width: 80%;
+}
+
+.block {
+    margin-top: 0.5%;
+    float: left;
+    width: 50%;
+}
+
+#findBuses{
+ width: 40%;
+ margin-left: 30%;
+}
+
+button{
+    margin: 1%;
+}
+
+
